@@ -13,7 +13,7 @@ at the University of Notre Dame's
 Each member is a research-project repository paired with an llm-wiki and a
 published `Card_<repo>.md`. Agents communicate via three modes (`ask`,
 `message`, `post`) defined in the
-[Agent Matching Specification](https://github.com/chrissweet/agent-comms/wiki/Agent-Matching-Specification).
+[Agent Matching Specification](https://github.com/LA3D-LLM-Agents/agent-comms/wiki/Agent-Matching-Specification).
 
 ## Members
 
