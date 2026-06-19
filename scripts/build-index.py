@@ -1,0 +1,151 @@
+#!/usr/bin/env python3
+"""build-index.py — Walk LA3D-LLM-Agents org repos, project each agent's
+Card_<repo>.md frontmatter into index.json.
+
+Honest sparsity: only fields the Card actually declares are projected;
+the rest are derived (clone_url, home_url, card_url). Cards under the
+new convention nest llm-wiki-specific fields under x-llm-wiki:;
+top-level fallbacks are also accepted for legacy Cards.
+
+Skipped without failing the run:
+- Repos with no accessible wiki (404, auth, archive)
+- Wikis with no Card_<repo>.md
+- Cards whose frontmatter cannot be parsed
+- Internal infrastructure repos (.github, the Pages repo itself)
+
+The script is intended to be run from the repo root of
+la3d-llm-agents.github.io; it writes ./index.json.
+"""
+
+from __future__ import annotations
+
+import json
+import os
+import subprocess
+import sys
+import tempfile
+from datetime import datetime, timezone
+from pathlib import Path
+
+import yaml
+
+ORG = "LA3D-LLM-Agents"
+INDEX_PATH = Path("index.json")
+EXCLUDE_REPOS = {".github", "la3d-llm-agents.github.io"}
+
+
+def gh_token() -> str | None:
+    return os.environ.get("GH_TOKEN") or os.environ.get("GITHUB_TOKEN")
+
+
+def list_org_repos() -> list[dict]:
+    """Return non-archived non-infrastructure repos in the org."""
+    out = subprocess.check_output(
+        ["gh", "api", "--paginate", f"/orgs/{ORG}/repos?per_page=100"],
+        text=True,
+    )
+    repos = json.loads(out)
+    return [
+        {"name": r["name"], "owner": r["owner"]["login"], "private": r["private"]}
+        for r in repos
+        if r["name"] not in EXCLUDE_REPOS and not r["archived"]
+    ]
+
+
+def clone_wiki(repo: dict, dest: Path) -> bool:
+    """Clone <owner>/<repo>.wiki.git into dest. True on success."""
+    owner, name = repo["owner"], repo["name"]
+    token = gh_token()
+    if token:
+        url = f"https://x-access-token:{token}@github.com/{owner}/{name}.wiki.git"
+    else:
+        url = f"https://github.com/{owner}/{name}.wiki.git"
+    try:
+        subprocess.run(
+            ["git", "clone", "--depth=1", "--quiet", url, str(dest)],
+            check=True,
+            capture_output=True,
+            timeout=60,
+        )
+        return True
+    except subprocess.CalledProcessError as e:
+        msg = e.stderr.decode(errors="replace").strip().splitlines()[-1:]
+        print(f"  {owner}/{name}: wiki clone failed ({msg}); skipping", file=sys.stderr)
+        return False
+    except subprocess.TimeoutExpired:
+        print(f"  {owner}/{name}: wiki clone timed out; skipping", file=sys.stderr)
+        return False
+
+
+def parse_card(card_path: Path) -> dict | None:
+    """Parse the frontmatter block of a Card_<repo>.md file."""
+    text = card_path.read_text(encoding="utf-8", errors="replace")
+    if not text.startswith("---\n"):
+        return None
+    end = text.find("\n---\n", 4)
+    if end == -1:
+        return None
+    try:
+        return yaml.safe_load(text[4:end])
+    except yaml.YAMLError as e:
+        print(f"  YAML parse error in {card_path}: {e}", file=sys.stderr)
+        return None
+
+
+def project(repo: dict, card: dict) -> dict:
+    """Project a parsed Card into a single index row."""
+    owner, name = repo["owner"], repo["name"]
+    x = card.get("x-llm-wiki") or {}
+    topics = x.get("topics") or card.get("topics") or []
+    endpoints = x.get("endpoints") or {}
+    return {
+        "id": card.get("id") or f"{owner}/{name}",
+        "owner_repo": f"{owner}/{name}",
+        "description": (card.get("description") or "").strip(),
+        "topics": topics,
+        "capabilities": card.get("capabilities") or [],
+        "home_url": f"https://github.com/{owner}/{name}/wiki/Home_{name}",
+        "card_url": f"https://github.com/{owner}/{name}/wiki/Card_{name}",
+        "wiki_clone_url": f"https://github.com/{owner}/{name}.wiki.git",
+        "endpoints": endpoints,
+        "private": repo.get("private", False),
+    }
+
+
+def main() -> int:
+    repos = list_org_repos()
+    print(f"Walking {len(repos)} org repos in {ORG}", file=sys.stderr)
+
+    agents: list[dict] = []
+    for repo in repos:
+        owner, name = repo["owner"], repo["name"]
+        print(f"  {owner}/{name}...", file=sys.stderr)
+        with tempfile.TemporaryDirectory() as td:
+            wiki_dir = Path(td)
+            if not clone_wiki(repo, wiki_dir):
+                continue
+            card_path = wiki_dir / f"Card_{name}.md"
+            if not card_path.exists():
+                print(f"  {owner}/{name}: no Card_{name}.md in wiki; skipping", file=sys.stderr)
+                continue
+            card = parse_card(card_path)
+            if card is None:
+                print(f"  {owner}/{name}: could not parse Card frontmatter; skipping", file=sys.stderr)
+                continue
+            agents.append(project(repo, card))
+
+    index = {
+        "schema_version": "0.1.0",
+        "generated_at": datetime.now(timezone.utc).isoformat(),
+        "generator": "build-index.py via .github/workflows/build-index.yml",
+        "org": ORG,
+        "agents": sorted(agents, key=lambda a: a["id"]),
+    }
+
+    INDEX_PATH.write_text(json.dumps(index, indent=2) + "\n", encoding="utf-8")
+    print(f"Wrote {INDEX_PATH} with {len(agents)} agents", file=sys.stderr)
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

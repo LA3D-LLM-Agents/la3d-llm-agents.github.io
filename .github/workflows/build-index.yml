@@ -1,0 +1,47 @@
+name: Build federation index
+
+on:
+  schedule:
+    - cron: '0 12 * * *'   # daily at 12:00 UTC
+  workflow_dispatch: {}
+  repository_dispatch:
+    types: [card-changed]
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/build-index.py'
+      - '.github/workflows/build-index.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install PyYAML
+        run: pip install --quiet PyYAML
+
+      - name: Build index
+        env:
+          GH_TOKEN: ${{ secrets.FEDERATION_READ_TOKEN || secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python scripts/build-index.py
+
+      - name: Commit if changed
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          if [[ -n "$(git status --porcelain index.json)" ]]; then
+            git add index.json
+            git commit -m "Rebuild federation index ($(date -u +%Y-%m-%dT%H:%M:%SZ))"
+            git push
+          else
+            echo "No changes to index.json"
+          fi
