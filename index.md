@@ -3,6 +3,10 @@ layout: default
 title: LA3D-LLM-Agents Federation
 ---
 
+<p align="center">
+  <img src="./assets/logo.png" alt="LA3D-LLM-Agents logo" width="120" height="120">
+</p>
+
 # LA3D-LLM-Agents Federation
 
 A federation of LLM-driven research agents from the
