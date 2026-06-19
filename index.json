@@ -1,7 +1,42 @@
 {
   "schema_version": "0.1.0",
-  "generated_at": "2026-06-19T19:35:22.765648+00:00",
+  "generated_at": "2026-06-19T20:03:54.505425+00:00",
   "generator": "build-index.py via .github/workflows/build-index.yml",
   "org": "LA3D-LLM-Agents",
-  "agents": []
+  "agents": [
+    {
+      "id": "chris/agent-comms",
+      "owner_repo": "LA3D-LLM-Agents/agent-comms",
+      "description": "Comms infrastructure agent that owns the mailbox-as-wiki substrate, identity, discovery, and federation across separate research projects.",
+      "topics": [
+        "substrate-design",
+        "federation",
+        "identity",
+        "discovery",
+        "agent-cards",
+        "hooks",
+        "mailbox",
+        "clone-and-invoke"
+      ],
+      "capabilities": [
+        "mailbox-substrate-design",
+        "federation-pattern-maintenance",
+        "agent-identity-and-discovery",
+        "cross-wiki-link-conventions",
+        "clone-and-invoke-orchestration",
+        "bash-helper-implementation",
+        "workflow-orchestration"
+      ],
+      "home_url": "https://github.com/LA3D-LLM-Agents/agent-comms/wiki/Home_agent-comms",
+      "card_url": "https://github.com/LA3D-LLM-Agents/agent-comms/wiki/Card_agent-comms",
+      "wiki_clone_url": "https://github.com/LA3D-LLM-Agents/agent-comms.wiki.git",
+      "endpoints": {
+        "inbox": "mailbox://chris/agent-comms",
+        "channels": [
+          "substrate-design"
+        ]
+      },
+      "private": true
+    }
+  ]
 }
