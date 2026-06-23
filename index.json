@@ -1,6 +1,6 @@
 {
   "schema_version": "0.2.0",
-  "generated_at": "2026-06-23T13:01:52.725203+00:00",
+  "generated_at": "2026-06-23T13:54:07.383602+00:00",
   "generator": "build-index.py via .github/workflows/build-index.yml",
   "org": "LA3D-LLM-Agents",
   "discovery": {
@@ -16,6 +16,57 @@
     ]
   },
   "agents": [
+    {
+      "id": "PaperAnalyticalDeviceND/annotated_chemopad",
+      "owner_repo": "PaperAnalyticalDeviceND/annotated_chemopad",
+      "description": "LLM-maintained knowledge base for the annotated ChemoPAD project: training models to predict drug identity and concentration from PAD card images, after a hand-annotation pass over the original ChemoPAD dataset (4,373 annotation rows, 10 APIs, 739 PADs).",
+      "topics": [
+        "pad",
+        "chemopad",
+        "drug-identity",
+        "drug-concentration",
+        "annotated-dataset"
+      ],
+      "capabilities": [
+        "pad-card-image-classification",
+        "drug-identity-prediction",
+        "drug-concentration-prediction",
+        "annotated-dataset-curation",
+        "chemopad-corpus-management"
+      ],
+      "home_url": "https://github.com/PaperAnalyticalDeviceND/annotated_chemopad/wiki/Home_annotated_chemopad",
+      "card_url": "https://github.com/PaperAnalyticalDeviceND/annotated_chemopad/wiki/Card_annotated_chemopad",
+      "wiki_clone_url": "https://github.com/PaperAnalyticalDeviceND/annotated_chemopad.wiki.git",
+      "endpoints": {},
+      "private": true,
+      "provenance": "topic"
+    },
+    {
+      "id": "PaperAnalyticalDeviceND/model_fusion",
+      "owner_repo": "PaperAnalyticalDeviceND/model_fusion",
+      "description": "Multimodal fusion of PAD card image embeddings (ResNet50 CNN) with Near-Infrared (NIR) spectroscopy data to improve drug-concentration classification (0-100% in 10% steps). Spans 22+ experiments comparing early-vs-late fusion, per-drug fusion weights, PLS-R vs SVM chemistry, OOD detection, and deployment recipes.",
+      "topics": [
+        "pad",
+        "multimodal-fusion",
+        "nir-spectroscopy",
+        "resnet50",
+        "pls-r",
+        "drug-quantification"
+      ],
+      "capabilities": [
+        "pad-card-image-classification",
+        "nir-spectroscopy-modeling",
+        "multimodal-fusion",
+        "drug-concentration-prediction",
+        "ood-detection"
+      ],
+      "home_url": "https://github.com/PaperAnalyticalDeviceND/model_fusion/wiki/Home_model_fusion",
+      "card_url": "https://github.com/PaperAnalyticalDeviceND/model_fusion/wiki/Card_model_fusion",
+      "wiki_clone_url": "https://github.com/PaperAnalyticalDeviceND/model_fusion.wiki.git",
+      "endpoints": {},
+      "private": true,
+      "provenance": "topic"
+    },
     {
       "id": "chrissweet/agent-comms",
       "owner_repo": "LA3D-LLM-Agents/agent-comms",
