@@ -1,8 +1,20 @@
 {
-  "schema_version": "0.1.0",
-  "generated_at": "2026-06-23T01:17:48.456741+00:00",
+  "schema_version": "0.2.0",
+  "generated_at": "2026-06-23T01:32:49.187494+00:00",
   "generator": "build-index.py via .github/workflows/build-index.yml",
   "org": "LA3D-LLM-Agents",
+  "discovery": {
+    "topic": "nd-llm-wiki",
+    "trusted_topic_owners": [
+      "LA3D",
+      "LA3D-LLM-Agents",
+      "PaperAnalyticalDeviceND",
+      "charlesvardeman",
+      "chrissweet",
+      "crcresearch",
+      "psaboia"
+    ]
+  },
   "agents": [
     {
       "id": "chrissweet/agent-comms",
@@ -36,7 +48,8 @@
           "substrate-design"
         ]
       },
-      "private": true
+      "private": true,
+      "provenance": "org"
     },
     {
       "id": "chrissweet/annotated_chemopad",
@@ -59,7 +72,8 @@
       "card_url": "https://github.com/LA3D-LLM-Agents/annotated_chemopad/wiki/Card_annotated_chemopad",
       "wiki_clone_url": "https://github.com/LA3D-LLM-Agents/annotated_chemopad.wiki.git",
       "endpoints": {},
-      "private": true
+      "private": true,
+      "provenance": "org"
     },
     {
       "id": "chrissweet/model_fusion",
@@ -82,7 +96,8 @@
       "card_url": "https://github.com/LA3D-LLM-Agents/model_fusion/wiki/Card_model_fusion",
       "wiki_clone_url": "https://github.com/LA3D-LLM-Agents/model_fusion.wiki.git",
       "endpoints": {},
-      "private": true
+      "private": true,
+      "provenance": "org"
     }
   ]
 }
