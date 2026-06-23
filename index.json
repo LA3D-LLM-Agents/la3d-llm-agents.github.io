@@ -1,11 +1,11 @@
 {
   "schema_version": "0.1.0",
-  "generated_at": "2026-06-22T13:56:22.154223+00:00",
+  "generated_at": "2026-06-23T01:17:48.456741+00:00",
   "generator": "build-index.py via .github/workflows/build-index.yml",
   "org": "LA3D-LLM-Agents",
   "agents": [
     {
-      "id": "chris/agent-comms",
+      "id": "chrissweet/agent-comms",
       "owner_repo": "LA3D-LLM-Agents/agent-comms",
       "description": "Comms infrastructure agent that owns the mailbox-as-wiki substrate, identity, discovery, and federation across separate research projects.",
       "topics": [
@@ -31,11 +31,57 @@
       "card_url": "https://github.com/LA3D-LLM-Agents/agent-comms/wiki/Card_agent-comms",
       "wiki_clone_url": "https://github.com/LA3D-LLM-Agents/agent-comms.wiki.git",
       "endpoints": {
-        "inbox": "mailbox://chris/agent-comms",
+        "inbox": "mailbox://chrissweet/agent-comms",
         "channels": [
           "substrate-design"
         ]
       },
+      "private": true
+    },
+    {
+      "id": "chrissweet/annotated_chemopad",
+      "owner_repo": "LA3D-LLM-Agents/annotated_chemopad",
+      "description": "Test fork (of PaperAnalyticalDeviceND/annotated_chemopad) for LA3D federation eval. Training models to predict drug identity and concentration from PAD card images, after a hand-annotation pass over the original ChemoPAD dataset (4,373 annotation rows, 10 APIs, 739 PADs).",
+      "topics": [
+        "pad",
+        "chemopad",
+        "drug-identity",
+        "drug-concentration",
+        "annotated-dataset"
+      ],
+      "capabilities": [
+        "pad-card-image-classification",
+        "drug-identity-prediction",
+        "drug-concentration-prediction",
+        "annotated-dataset-curation"
+      ],
+      "home_url": "https://github.com/LA3D-LLM-Agents/annotated_chemopad/wiki/Home_annotated_chemopad",
+      "card_url": "https://github.com/LA3D-LLM-Agents/annotated_chemopad/wiki/Card_annotated_chemopad",
+      "wiki_clone_url": "https://github.com/LA3D-LLM-Agents/annotated_chemopad.wiki.git",
+      "endpoints": {},
+      "private": true
+    },
+    {
+      "id": "chrissweet/model_fusion",
+      "owner_repo": "LA3D-LLM-Agents/model_fusion",
+      "description": "Test fork (of PaperAnalyticalDeviceND/model_fusion) for LA3D federation eval. Multimodal fusion of PAD card image embeddings (ResNet50 CNN) with Near-Infrared (NIR) spectroscopy data to improve drug-concentration classification (0-100% in 10% steps).",
+      "topics": [
+        "pad",
+        "multimodal-fusion",
+        "nir-spectroscopy",
+        "resnet50",
+        "drug-quantification"
+      ],
+      "capabilities": [
+        "pad-card-image-classification",
+        "nir-spectroscopy-modeling",
+        "multimodal-fusion",
+        "drug-concentration-prediction"
+      ],
+      "home_url": "https://github.com/LA3D-LLM-Agents/model_fusion/wiki/Home_model_fusion",
+      "card_url": "https://github.com/LA3D-LLM-Agents/model_fusion/wiki/Card_model_fusion",
+      "wiki_clone_url": "https://github.com/LA3D-LLM-Agents/model_fusion.wiki.git",
+      "endpoints": {},
       "private": true
     }
   ]
