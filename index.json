@@ -1,6 +1,6 @@
 {
   "schema_version": "0.2.0",
-  "generated_at": "2026-07-14T16:34:34.764637+00:00",
+  "generated_at": "2026-07-14T16:36:17.341312+00:00",
   "generator": "build-index.py via .github/workflows/build-index.yml",
   "org": "LA3D-LLM-Agents",
   "discovery": {
@@ -124,6 +124,30 @@
       "wiki_clone_url": "https://github.com/LA3D-LLM-Agents/annotated_chemopad.wiki.git",
       "endpoints": {},
       "private": true,
+      "provenance": "org"
+    },
+    {
+      "id": "chrissweet/llm-wiki-KB",
+      "owner_repo": "LA3D-LLM-Agents/llm-wiki-KB",
+      "description": "Knowledge bundle teaching users about the llm-wiki-memory-template: what it is, how to install and operate it, its wiki conventions, knowledge-graph pipeline, extension, and team workflow.",
+      "topics": [
+        "llm-wiki",
+        "knowledge-bundle",
+        "template",
+        "durable-memory",
+        "wiki-as-memory",
+        "documentation"
+      ],
+      "capabilities": [
+        "Answer questions about the llm-wiki-memory-template (install, operate, extend)",
+        "Explain the wiki conventions, frontmatter, typed edges, and knowledge-graph pipeline",
+        "Serve as a consumable topical bundle grounded in the template docs and its wikis"
+      ],
+      "home_url": "https://github.com/LA3D-LLM-Agents/llm-wiki-KB/wiki/Home_llm-wiki-KB",
+      "card_url": "https://github.com/LA3D-LLM-Agents/llm-wiki-KB/wiki/Card_llm-wiki-KB",
+      "wiki_clone_url": "https://github.com/LA3D-LLM-Agents/llm-wiki-KB.wiki.git",
+      "endpoints": {},
+      "private": false,
       "provenance": "org"
     },
     {
