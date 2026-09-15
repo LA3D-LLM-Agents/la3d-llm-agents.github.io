@@ -1,6 +1,6 @@
 {
   "schema_version": "0.2.0",
-  "generated_at": "2026-09-15T12:15:41.313370+00:00",
+  "generated_at": "2026-09-15T14:49:38.936236+00:00",
   "generator": "build-index.py via .github/workflows/build-index.yml",
   "org": "LA3D-LLM-Agents",
   "discovery": {
@@ -173,6 +173,28 @@
       "endpoints": {},
       "private": true,
       "provenance": "org"
+    },
+    {
+      "id": "chrissweet/sat_codex_wiki",
+      "owner_repo": "chrissweet/sat_codex_wiki",
+      "description": "Research wiki for testing source ingestion and recording AlphaFold protein-structure experiments.",
+      "topics": [
+        "llm-wiki",
+        "source-ingestion",
+        "alphafold",
+        "protein-structure"
+      ],
+      "capabilities": [
+        "Answer questions about the ingested AlphaFold paper with source references",
+        "Report local chignolin prediction results and their evaluation conditions",
+        "Explain source-ingestion methods and documented coverage gaps"
+      ],
+      "home_url": "https://github.com/chrissweet/sat_codex_wiki/wiki/Home_sat_codex_wiki",
+      "card_url": "https://github.com/chrissweet/sat_codex_wiki/wiki/Card_sat_codex_wiki",
+      "wiki_clone_url": "https://github.com/chrissweet/sat_codex_wiki.wiki.git",
+      "endpoints": {},
+      "private": true,
+      "provenance": "topic"
     }
   ]
 }
