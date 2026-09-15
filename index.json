@@ -1,6 +1,6 @@
 {
   "schema_version": "0.2.0",
-  "generated_at": "2026-09-15T20:50:08.069567+00:00",
+  "generated_at": "2026-09-15T23:17:46.273815+00:00",
   "generator": "build-index.py via .github/workflows/build-index.yml",
   "org": "LA3D-LLM-Agents",
   "discovery": {
@@ -151,6 +151,29 @@
       "provenance": "org"
     },
     {
+      "id": "chrissweet/llm-wiki-vision",
+      "owner_repo": "chrissweet/llm-wiki-vision",
+      "description": "Vision and evidence for LLM-wiki retrieval: distribution-based Markov walks over lightweight structural graphs, applied hierarchically across wiki pages and corpus chunks.",
+      "topics": [
+        "llm-wiki",
+        "retrieval",
+        "markov-walk",
+        "structural-graphs",
+        "rag",
+        "knowledge-graph"
+      ],
+      "capabilities": [
+        "answer questions about LLM-wiki retrieval architecture and its empirical evidence",
+        "explain distribution-based Markov retrieval versus SPARQL pattern matching"
+      ],
+      "home_url": "https://github.com/chrissweet/llm-wiki-vision/wiki/Home_llm-wiki-vision",
+      "card_url": "https://github.com/chrissweet/llm-wiki-vision/wiki/Card_llm-wiki-vision",
+      "wiki_clone_url": "https://github.com/chrissweet/llm-wiki-vision.wiki.git",
+      "endpoints": {},
+      "private": true,
+      "provenance": "topic"
+    },
+    {
       "id": "chrissweet/model_fusion",
       "owner_repo": "LA3D-LLM-Agents/model_fusion",
       "description": "Test fork (of PaperAnalyticalDeviceND/model_fusion) for LA3D federation eval. Multimodal fusion of PAD card image embeddings (ResNet50 CNN) with Near-Infrared (NIR) spectroscopy data to improve drug-concentration classification (0-100% in 10% steps).",
@@ -192,29 +215,6 @@
       "home_url": "https://github.com/chrissweet/sat_codex_wiki/wiki/Home_sat_codex_wiki",
       "card_url": "https://github.com/chrissweet/sat_codex_wiki/wiki/Card_sat_codex_wiki",
       "wiki_clone_url": "https://github.com/chrissweet/sat_codex_wiki.wiki.git",
-      "endpoints": {},
-      "private": true,
-      "provenance": "topic"
-    },
-    {
-      "id": "llm-wiki-vision",
-      "owner_repo": "chrissweet/llm-wiki-vision",
-      "description": "Vision and evidence for LLM-wiki retrieval: distribution-based Markov walks over lightweight structural graphs, applied hierarchically across wiki pages and corpus chunks.",
-      "topics": [
-        "llm-wiki",
-        "retrieval",
-        "markov-walk",
-        "structural-graphs",
-        "rag",
-        "knowledge-graph"
-      ],
-      "capabilities": [
-        "answer questions about LLM-wiki retrieval architecture and its empirical evidence",
-        "explain distribution-based Markov retrieval versus SPARQL pattern matching"
-      ],
-      "home_url": "https://github.com/chrissweet/llm-wiki-vision/wiki/Home_llm-wiki-vision",
-      "card_url": "https://github.com/chrissweet/llm-wiki-vision/wiki/Card_llm-wiki-vision",
-      "wiki_clone_url": "https://github.com/chrissweet/llm-wiki-vision.wiki.git",
       "endpoints": {},
       "private": true,
       "provenance": "topic"
