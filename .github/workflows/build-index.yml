@@ -2,7 +2,7 @@ name: Build federation index
 
 on:
   schedule:
-    - cron: '0 12 * * *'   # daily at 12:00 UTC
+    - cron: '0 * * * *'   # hourly, on the hour (UTC)
   workflow_dispatch: {}
   repository_dispatch:
     types: [card-changed]
