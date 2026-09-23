@@ -1,6 +1,6 @@
 {
   "schema_version": "0.2.0",
-  "generated_at": "2026-09-23T19:03:26.335436+00:00",
+  "generated_at": "2026-09-23T19:07:31.415781+00:00",
   "generator": "build-index.py via .github/workflows/build-index.yml",
   "org": "LA3D-LLM-Agents",
   "discovery": {
@@ -196,6 +196,28 @@
       "endpoints": {},
       "private": true,
       "provenance": "org"
+    },
+    {
+      "id": "chrissweet/rare-disease",
+      "owner_repo": "chrissweet/rare-disease",
+      "description": "Natural-language discovery engine over the rare-disease publications database (/ask-db): read-only, recipe-backed queries answered with provenance.",
+      "topics": [
+        "rare-disease",
+        "publications",
+        "clinical-trials",
+        "discovery",
+        "ask-db"
+      ],
+      "capabilities": [
+        "ask-db: plain-English queries over the publications DB, read-only via vetted recipes",
+        "corpus analytics: analysis-ready and clinical-trial coverage per disease"
+      ],
+      "home_url": "https://github.com/chrissweet/rare-disease/wiki/Home_rare-disease",
+      "card_url": "https://github.com/chrissweet/rare-disease/wiki/Card_rare-disease",
+      "wiki_clone_url": "https://github.com/chrissweet/rare-disease.wiki.git",
+      "endpoints": {},
+      "private": true,
+      "provenance": "topic"
     },
     {
       "id": "chrissweet/sat_codex_wiki",
