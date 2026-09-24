@@ -12,6 +12,10 @@ on:
       - 'scripts/build-index.py'
       - '.github/workflows/build-index.yml'
 
+concurrency:
+  group: federation-index-main
+  cancel-in-progress: false
+
 permissions:
   contents: write
 
@@ -28,20 +32,29 @@ jobs:
       - name: Install PyYAML
         run: pip install --quiet PyYAML
 
-      - name: Build index
+      - name: Build and publish index
         env:
           GH_TOKEN: ${{ secrets.FEDERATION_READ_TOKEN || secrets.GITHUB_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: python scripts/build-index.py
-
-      - name: Commit if changed
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          if [[ -n "$(git status --porcelain index.json)" ]]; then
+          for attempt in 1 2 3 4; do
+            # Start each attempt from current main, including after a manual rerun
+            # of an old workflow. Never merge an obsolete generated index.
+            git fetch origin main
+            git switch --detach FETCH_HEAD
+            python scripts/build-index.py
+            if git diff --quiet -- index.json; then
+              echo "No changes to index.json"
+              exit 0
+            fi
             git add index.json
             git commit -m "Rebuild federation index ($(date -u +%Y-%m-%dT%H:%M:%SZ))"
-            git push
-          else
-            echo "No changes to index.json"
-          fi
+            if git push origin HEAD:main; then
+              exit 0
+            fi
+            echo "Push failed on attempt $attempt; rebuilding from latest main."
+          done
+          echo "Could not publish index after four attempts." >&2
+          exit 1
