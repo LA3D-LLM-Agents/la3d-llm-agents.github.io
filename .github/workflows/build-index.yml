@@ -9,7 +9,10 @@ on:
   push:
     branches: [main]
     paths:
-      - 'scripts/build-index.py'
+      - 'scripts/**'
+      - 'schemas/**'
+      - 'tests/**'
+      - 'requirements.txt'
       - '.github/workflows/build-index.yml'
 
 concurrency:
@@ -29,8 +32,11 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Install PyYAML
-        run: pip install --quiet PyYAML
+      - name: Install reader dependencies
+        run: pip install --quiet -r requirements.txt
+
+      - name: Test card readers
+        run: python -m unittest discover -s tests -v
 
       - name: Build and publish index
         env:
@@ -44,6 +50,8 @@ jobs:
             # of an old workflow. Never merge an obsolete generated index.
             git fetch origin main
             git switch --detach FETCH_HEAD
+            pip install --quiet -r requirements.txt
+            python -m unittest discover -s tests -v
             python scripts/build-index.py
             if git diff --quiet -- index.json; then
               echo "No changes to index.json"

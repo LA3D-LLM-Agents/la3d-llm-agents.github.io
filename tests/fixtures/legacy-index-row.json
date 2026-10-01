@@ -1,0 +1,26 @@
+{
+  "id": "chrissweet/llm-wiki-fabric",
+  "owner_repo": "chrissweet/llm-wiki-fabric",
+  "description": "Develops and operates the llm-wiki knowledge fabric for MCP resource discovery, direct PAD and rare-disease queries, and graph-based resource exploration.",
+  "topics": [
+    "llm-wiki",
+    "knowledge-fabric",
+    "mcp",
+    "resource-discovery",
+    "pad",
+    "rare-disease",
+    "cytoscape"
+  ],
+  "capabilities": [
+    "Explain the fabric architecture and descriptor-driven resource discovery",
+    "Document and maintain hosted MCP discovery and direct resource connectors",
+    "Answer questions about PAD and rare-disease integration and recorded validation",
+    "Explain the resource graph dashboard and deployment operations"
+  ],
+  "home_url": "https://github.com/chrissweet/llm-wiki-fabric/wiki/Home_llm-wiki-fabric",
+  "card_url": "https://github.com/chrissweet/llm-wiki-fabric/wiki/Card_llm-wiki-fabric",
+  "wiki_clone_url": "https://github.com/chrissweet/llm-wiki-fabric.wiki.git",
+  "endpoints": {},
+  "private": true,
+  "provenance": "topic"
+}
