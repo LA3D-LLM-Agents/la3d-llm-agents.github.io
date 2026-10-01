@@ -1,6 +1,6 @@
 {
   "schema_version": "0.3.0",
-  "generated_at": "2026-10-01T22:30:01.241890+00:00",
+  "generated_at": "2026-10-01T22:39:12.766073+00:00",
   "generator": "build-index.py via .github/workflows/build-index.yml",
   "org": "LA3D-LLM-Agents",
   "discovery": {
@@ -174,7 +174,66 @@
       "wiki_clone_url": "https://github.com/chrissweet/llm-wiki-fabric.wiki.git",
       "endpoints": {},
       "private": true,
-      "provenance": "topic"
+      "provenance": "topic",
+      "x-fabric-card": {
+        "schema_version": "1.0",
+        "id": "chrissweet/llm-wiki-fabric",
+        "name": "Fabric project agent",
+        "description": "Develops and operates the llm-wiki knowledge fabric for MCP resource discovery, direct PAD and rare-disease queries, and graph-based resource exploration.",
+        "card_url": "https://github.com/chrissweet/llm-wiki-fabric/wiki/Card_llm-wiki-fabric",
+        "skills": [
+          {
+            "id": "explain-fabric",
+            "name": "Explain fabric discovery",
+            "description": "Explain the fabric architecture and descriptor-driven resource discovery",
+            "tags": [
+              "fabric",
+              "discovery"
+            ]
+          },
+          {
+            "id": "maintain-fabric",
+            "name": "Maintain fabric integrations",
+            "description": "Document and maintain hosted MCP discovery and direct resource connectors",
+            "tags": [
+              "mcp",
+              "operations"
+            ]
+          },
+          {
+            "id": "explain-validation",
+            "name": "Explain recorded validation",
+            "description": "Answer questions about PAD and rare-disease integration and recorded validation",
+            "tags": [
+              "pad",
+              "rare-disease"
+            ]
+          },
+          {
+            "id": "explain-dashboard",
+            "name": "Explain the resource dashboard",
+            "description": "Explain the resource graph dashboard and deployment operations",
+            "tags": [
+              "graph",
+              "dashboard"
+            ]
+          }
+        ],
+        "knowledge_bundles": [
+          {
+            "id": "project-wiki",
+            "url": "https://github.com/chrissweet/llm-wiki-fabric/wiki"
+          }
+        ],
+        "interfaces": [
+          {
+            "id": "wiki-ask",
+            "kind": "clone-and-invoke",
+            "url": "https://github.com/chrissweet/llm-wiki-fabric.wiki.git",
+            "bundle_id": "project-wiki"
+          }
+        ]
+      }
     },
     {
       "id": "chrissweet/llm-wiki-vision",
