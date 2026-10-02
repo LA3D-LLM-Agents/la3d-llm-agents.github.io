@@ -1,6 +1,6 @@
 {
   "schema_version": "0.3.0",
-  "generated_at": "2026-10-01T23:16:14.749590+00:00",
+  "generated_at": "2026-10-02T00:53:05.634890+00:00",
   "generator": "build-index.py via .github/workflows/build-index.yml",
   "org": "LA3D-LLM-Agents",
   "discovery": {
