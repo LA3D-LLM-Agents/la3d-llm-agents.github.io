@@ -1,6 +1,6 @@
 {
   "schema_version": "0.3.0",
-  "generated_at": "2026-10-22T15:18:53.663633+00:00",
+  "generated_at": "2026-10-22T16:22:05.459323+00:00",
   "generator": "build-index.py via .github/workflows/build-index.yml",
   "org": "LA3D-LLM-Agents",
   "discovery": {
@@ -16,6 +16,57 @@
     ]
   },
   "agents": [
+    {
+      "id": "PaperAnalyticalDeviceND/annotated_chemopad",
+      "owner_repo": "PaperAnalyticalDeviceND/annotated_chemopad",
+      "description": "LLM-maintained knowledge base for the annotated ChemoPAD project: training models to predict drug identity and concentration from PAD card images, after a hand-annotation pass over the original ChemoPAD dataset (4,373 annotation rows, 10 APIs, 739 PADs).",
+      "topics": [
+        "pad",
+        "chemopad",
+        "drug-identity",
+        "drug-concentration",
+        "annotated-dataset"
+      ],
+      "capabilities": [
+        "pad-card-image-classification",
+        "drug-identity-prediction",
+        "drug-concentration-prediction",
+        "annotated-dataset-curation",
+        "chemopad-corpus-management"
+      ],
+      "home_url": "https://github.com/PaperAnalyticalDeviceND/annotated_chemopad/wiki/Home_annotated_chemopad",
+      "card_url": "https://github.com/PaperAnalyticalDeviceND/annotated_chemopad/wiki/Card_annotated_chemopad",
+      "wiki_clone_url": "https://github.com/PaperAnalyticalDeviceND/annotated_chemopad.wiki.git",
+      "endpoints": {},
+      "private": true,
+      "provenance": "topic"
+    },
+    {
+      "id": "PaperAnalyticalDeviceND/model_fusion",
+      "owner_repo": "PaperAnalyticalDeviceND/model_fusion",
+      "description": "Multimodal fusion of PAD card image embeddings (ResNet50 CNN) with Near-Infrared (NIR) spectroscopy data to improve drug-concentration classification (0-100% in 10% steps). Spans 22+ experiments comparing early-vs-late fusion, per-drug fusion weights, PLS-R vs SVM chemistry, OOD detection, and deployment recipes.",
+      "topics": [
+        "pad",
+        "multimodal-fusion",
+        "nir-spectroscopy",
+        "resnet50",
+        "pls-r",
+        "drug-quantification"
+      ],
+      "capabilities": [
+        "pad-card-image-classification",
+        "nir-spectroscopy-modeling",
+        "multimodal-fusion",
+        "drug-concentration-prediction",
+        "ood-detection"
+      ],
+      "home_url": "https://github.com/PaperAnalyticalDeviceND/model_fusion/wiki/Home_model_fusion",
+      "card_url": "https://github.com/PaperAnalyticalDeviceND/model_fusion/wiki/Card_model_fusion",
+      "wiki_clone_url": "https://github.com/PaperAnalyticalDeviceND/model_fusion.wiki.git",
+      "endpoints": {},
+      "private": true,
+      "provenance": "topic"
+    },
     {
       "id": "chrissweet/agent-comms",
       "owner_repo": "LA3D-LLM-Agents/agent-comms",
@@ -100,6 +151,114 @@
       "provenance": "org"
     },
     {
+      "id": "chrissweet/llm-wiki-fabric",
+      "owner_repo": "chrissweet/llm-wiki-fabric",
+      "description": "Develops and operates the llm-wiki knowledge fabric for MCP resource discovery, direct PAD and rare-disease queries, and graph-based resource exploration.",
+      "topics": [
+        "llm-wiki",
+        "knowledge-fabric",
+        "mcp",
+        "resource-discovery",
+        "pad",
+        "rare-disease",
+        "cytoscape"
+      ],
+      "capabilities": [
+        "Explain the fabric architecture and descriptor-driven resource discovery",
+        "Document and maintain hosted MCP discovery and direct resource connectors",
+        "Answer questions about PAD and rare-disease integration and recorded validation",
+        "Explain the resource graph dashboard and deployment operations"
+      ],
+      "home_url": "https://github.com/chrissweet/llm-wiki-fabric/wiki/Home_llm-wiki-fabric",
+      "card_url": "https://github.com/chrissweet/llm-wiki-fabric/wiki/Card_llm-wiki-fabric",
+      "wiki_clone_url": "https://github.com/chrissweet/llm-wiki-fabric.wiki.git",
+      "endpoints": {},
+      "private": true,
+      "provenance": "topic",
+      "x-fabric-card": {
+        "schema_version": "1.0",
+        "id": "chrissweet/llm-wiki-fabric",
+        "name": "Fabric project agent",
+        "description": "Develops and operates the llm-wiki knowledge fabric for MCP resource discovery, direct PAD and rare-disease queries, and graph-based resource exploration.",
+        "card_url": "https://github.com/chrissweet/llm-wiki-fabric/wiki/Card_llm-wiki-fabric",
+        "skills": [
+          {
+            "id": "explain-fabric",
+            "name": "Explain fabric discovery",
+            "description": "Explain the fabric architecture and descriptor-driven resource discovery",
+            "tags": [
+              "fabric",
+              "discovery"
+            ]
+          },
+          {
+            "id": "maintain-fabric",
+            "name": "Maintain fabric integrations",
+            "description": "Document and maintain hosted MCP discovery and direct resource connectors",
+            "tags": [
+              "mcp",
+              "operations"
+            ]
+          },
+          {
+            "id": "explain-validation",
+            "name": "Explain recorded validation",
+            "description": "Answer questions about PAD and rare-disease integration and recorded validation",
+            "tags": [
+              "pad",
+              "rare-disease"
+            ]
+          },
+          {
+            "id": "explain-dashboard",
+            "name": "Explain the resource dashboard",
+            "description": "Explain the resource graph dashboard and deployment operations",
+            "tags": [
+              "graph",
+              "dashboard"
+            ]
+          }
+        ],
+        "knowledge_bundles": [
+          {
+            "id": "project-wiki",
+            "url": "https://github.com/chrissweet/llm-wiki-fabric/wiki"
+          }
+        ],
+        "interfaces": [
+          {
+            "id": "wiki-ask",
+            "kind": "clone-and-invoke",
+            "url": "https://github.com/chrissweet/llm-wiki-fabric.wiki.git",
+            "bundle_id": "project-wiki"
+          }
+        ]
+      }
+    },
+    {
+      "id": "chrissweet/llm-wiki-vision",
+      "owner_repo": "chrissweet/llm-wiki-vision",
+      "description": "Vision and evidence for LLM-wiki retrieval: distribution-based Markov walks over lightweight structural graphs, applied hierarchically across wiki pages and corpus chunks.",
+      "topics": [
+        "llm-wiki",
+        "retrieval",
+        "markov-walk",
+        "structural-graphs",
+        "rag",
+        "knowledge-graph"
+      ],
+      "capabilities": [
+        "answer questions about LLM-wiki retrieval architecture and its empirical evidence",
+        "explain distribution-based Markov retrieval versus SPARQL pattern matching"
+      ],
+      "home_url": "https://github.com/chrissweet/llm-wiki-vision/wiki/Home_llm-wiki-vision",
+      "card_url": "https://github.com/chrissweet/llm-wiki-vision/wiki/Card_llm-wiki-vision",
+      "wiki_clone_url": "https://github.com/chrissweet/llm-wiki-vision.wiki.git",
+      "endpoints": {},
+      "private": true,
+      "provenance": "topic"
+    },
+    {
       "id": "chrissweet/model_fusion",
       "owner_repo": "LA3D-LLM-Agents/model_fusion",
       "description": "Test fork (of PaperAnalyticalDeviceND/model_fusion) for LA3D federation eval. Multimodal fusion of PAD card image embeddings (ResNet50 CNN) with Near-Infrared (NIR) spectroscopy data to improve drug-concentration classification (0-100% in 10% steps).",
@@ -122,6 +281,50 @@
       "endpoints": {},
       "private": true,
       "provenance": "org"
+    },
+    {
+      "id": "chrissweet/rare-disease",
+      "owner_repo": "chrissweet/rare-disease",
+      "description": "Natural-language discovery engine over the rare-disease publications database (/ask-db): read-only, recipe-backed queries answered with provenance.",
+      "topics": [
+        "rare-disease",
+        "publications",
+        "clinical-trials",
+        "discovery",
+        "ask-db"
+      ],
+      "capabilities": [
+        "ask-db: plain-English queries over the publications DB, read-only via vetted recipes",
+        "corpus analytics: analysis-ready and clinical-trial coverage per disease"
+      ],
+      "home_url": "https://github.com/chrissweet/rare-disease/wiki/Home_rare-disease",
+      "card_url": "https://github.com/chrissweet/rare-disease/wiki/Card_rare-disease",
+      "wiki_clone_url": "https://github.com/chrissweet/rare-disease.wiki.git",
+      "endpoints": {},
+      "private": true,
+      "provenance": "topic"
+    },
+    {
+      "id": "chrissweet/sat_codex_wiki",
+      "owner_repo": "chrissweet/sat_codex_wiki",
+      "description": "Research wiki for testing source ingestion and recording AlphaFold protein-structure experiments.",
+      "topics": [
+        "llm-wiki",
+        "source-ingestion",
+        "alphafold",
+        "protein-structure"
+      ],
+      "capabilities": [
+        "Answer questions about the ingested AlphaFold paper with source references",
+        "Report local chignolin prediction results and their evaluation conditions",
+        "Explain source-ingestion methods and documented coverage gaps"
+      ],
+      "home_url": "https://github.com/chrissweet/sat_codex_wiki/wiki/Home_sat_codex_wiki",
+      "card_url": "https://github.com/chrissweet/sat_codex_wiki/wiki/Card_sat_codex_wiki",
+      "wiki_clone_url": "https://github.com/chrissweet/sat_codex_wiki.wiki.git",
+      "endpoints": {},
+      "private": true,
+      "provenance": "topic"
     }
   ]
 }
