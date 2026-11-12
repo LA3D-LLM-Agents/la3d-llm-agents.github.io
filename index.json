@@ -1,6 +1,6 @@
 {
   "schema_version": "0.3.0",
-  "generated_at": "2026-11-12T20:12:23.904291+00:00",
+  "generated_at": "2026-11-12T21:10:57.235244+00:00",
   "generator": "build-index.py via .github/workflows/build-index.yml",
   "org": "LA3D-LLM-Agents",
   "discovery": {
@@ -325,6 +325,40 @@
       "endpoints": {},
       "private": true,
       "provenance": "topic"
+    },
+    {
+      "id": "psaboia/teste-wiki-enroll",
+      "owner_repo": "psaboia/teste-wiki-enroll",
+      "description": "Revised test scope.",
+      "topics": [
+        "test"
+      ],
+      "capabilities": [
+        "Explain: the enroll test"
+      ],
+      "home_url": "https://github.com/psaboia/teste-wiki-enroll/wiki/Home_teste-wiki-enroll",
+      "card_url": "https://github.com/psaboia/teste-wiki-enroll/wiki/Card_teste-wiki-enroll",
+      "wiki_clone_url": "https://github.com/psaboia/teste-wiki-enroll.wiki.git",
+      "endpoints": {},
+      "private": false,
+      "provenance": "topic",
+      "x-fabric-card": {
+        "schema_version": "1.0",
+        "id": "psaboia/teste-wiki-enroll",
+        "name": "teste-wiki-enroll",
+        "description": "Revised test scope.",
+        "card_url": "https://github.com/psaboia/teste-wiki-enroll/wiki/Card_teste-wiki-enroll",
+        "skills": [
+          {
+            "id": "skill-642d75686ed1773d",
+            "name": "Explain: the enroll test",
+            "description": "Explain: the enroll test",
+            "tags": []
+          }
+        ],
+        "knowledge_bundles": [],
+        "interfaces": []
+      }
     }
   ]
 }
